@@ -18,7 +18,7 @@ And update oauth2 redirect uri with uri created
 https://discord.com/developers/applications
 
 to the uri created, with 
-[redirecturi]/login/discord/callback
+[redirecturi]/auth/login/callback
 
 and update the .env value for `redirectURL`
 

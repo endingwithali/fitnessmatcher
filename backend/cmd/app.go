@@ -36,7 +36,7 @@ func main() {
 		}
 	}()
 
-	mongoDatabase := mongoClient.Database("fitnessApp")
+	mongoDatabase := mongoClient.Database("fitnessapp")
 	chiRouter := chi.NewRouter()
 	chiRouter.Use(middleware.Logger)
 
@@ -44,7 +44,9 @@ func main() {
 		w.Write([]byte("hi"))
 	})
 
-	chiRouter.Mount("/login", handlers.LoginRouter(ctx, *mongoDatabase))
+	chiRouter.Mount("/auth", handlers.AuthRouter(ctx, *mongoDatabase))
+	chiRouter.Mount("/workout", handlers.WorkoutRouter(ctx, *mongoDatabase))
+	chiRouter.Mount("/db", handlers.DBRouter(ctx, *mongoDatabase))
 
 	log.Println("listening on localhost:3000")
 	log.Fatal(http.ListenAndServe(":3000", chiRouter))

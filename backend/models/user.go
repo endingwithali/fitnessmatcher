@@ -7,4 +7,5 @@ import (
 type User struct {
 	ID        primitive.ObjectID `bson:"_id"`
 	DiscordID string             `bson:"discord_id"`
+	UserID    primitive.ObjectID `bson:"user_id"`
 }
